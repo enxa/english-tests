@@ -3,7 +3,7 @@
   let password = 'vcx'
   let result = null
 
-  let handleSignUp = async () => {
+  let handleSignUp = async e => {
     let data = { email, password }
 
     let response = await fetch(`./auth`, {
@@ -17,7 +17,7 @@
     result = await response.json()
   }
 
-  let handleSignIn = async () => {
+  let handleSignIn = async e => {
     let data = { email, password }
 
     let response = await fetch(`./auth`, {
@@ -31,7 +31,7 @@
     result = await response.json()
   }
 
-  let handleSignOut = async () => {
+  let handleSignOut = async e => {
     let data = { email, password }
 
     let response = await fetch(`./auth`, {
