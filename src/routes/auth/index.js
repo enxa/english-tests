@@ -10,7 +10,7 @@ export const post = async e => {
 
   let database = await connectToDatabase()
   // check if user exists
-  let user = await database.db('sample_airbnb').collection('users').findOne({email})
+  let user = await database.db('english-tests').collection('users').findOne({email})
   if (user) return {
     body: {
       auth: 'Email zarezerwowany'
@@ -24,7 +24,7 @@ export const post = async e => {
     }
   }
   // save user to db
-  let result = await database.db('sample_airbnb').collection('users').insertOne({email: email, password: hashed})
+  let result = await database.db('english-tests').collection('users').insertOne({email: email, password: hashed})
   if (result.acknowledged) return {
     body: {
       auth: 'Zarejestrowano'
@@ -39,7 +39,7 @@ export const put = async e => {
 
   let database = await connectToDatabase()
   // check if user exists
-  let user = await database.db('sample_airbnb').collection('users').findOne({email})
+  let user = await database.db('english-tests').collection('users').findOne({email})
   if (!user) return {
     body: {
       auth: 'Niepoprawny email lub hasło'
@@ -59,6 +59,7 @@ export const put = async e => {
       'Set-Cookie': serialize('jwt', token, {
         path: '/',
         httpOnly: true,
+        sameSite: 'strict',
         maxAge: 60 * 60 * 24 * 7, // one week,
       })
     },
@@ -74,6 +75,7 @@ export let del = async e  => {
       'Set-Cookie': serialize('jwt', '', {
         path: '/',
         httpOnly: true,
+        sameSite: 'strict',
         maxAge: 0
       })
     },
