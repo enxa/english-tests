@@ -14,8 +14,9 @@
   <p bind:this={DOManswerB} on:click={() => checkAnswer(answerB, DOManswerB)}>{answerB}</p>
   <p bind:this={DOManswerC} on:click={() => checkAnswer(answerC, DOManswerC)}>{answerC}</p>
   <p bind:this={DOManswerD} on:click={() => checkAnswer(answerD, DOManswerD)}>{answerD}</p>
+  <a href="/">&larr;</a>
   <br>
-  <a href="/">&lt;</a>
+  
 </div>
 
 <style>
@@ -28,9 +29,11 @@
   div {
     line-height: 5rem;
   }
-  small {
+  small, a {
+    color: gray;
     font-weight: 200;
     padding-right: 2.5rem;
+    font-size: 2.5rem;
   }
   h1 {
     font-size: 2.5rem;
@@ -38,10 +41,6 @@
   p {
     cursor: pointer;
     font-size: 1.5rem;
-  }
-  a {
-    color: gray;
-    font-weight: 200;
-    font-size: 5rem;
+    transition: .4s all;
   }
 </style>

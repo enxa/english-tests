@@ -9,7 +9,7 @@
   let resultArray = []
   let resultStore = writable([])
   let skip = 0
-  let limit = 10
+  let limit = 100
   
   let loadMore = async (skip) => {
     loading = true
