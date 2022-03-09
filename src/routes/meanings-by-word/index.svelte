@@ -9,7 +9,7 @@
   let resultArray = []
   let resultStore = writable([])
   let skip = 0
-  let limit = 10
+  let limit = 100
   
   let loadMore = async (skip) => {
     loading = true
@@ -53,7 +53,7 @@
 {#if $resultStore[i]}
   <section>
     {#key $resultStore[i]}
-      <span style="display: inline-block; position: absolute; top: 36%; padding: 0 20vw" in:fly={{ y: -20, delay: 200 }} out:fly={{ y: 20}}>
+      <span style="display: inline-block; position: absolute; top: 40%; padding: 0 20vw" in:fly={{ y: -20, delay: 200 }} out:fly={{ y: 20}}>
         <Test {...$resultStore[i]} {i}/>
       </span>
     {/key}

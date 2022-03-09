@@ -14,9 +14,17 @@
   <p bind:this={DOManswerB} on:click={() => checkAnswer(answerB, DOManswerB)}>{answerB}</p>
   <p bind:this={DOManswerC} on:click={() => checkAnswer(answerC, DOManswerC)}>{answerC}</p>
   <p bind:this={DOManswerD} on:click={() => checkAnswer(answerD, DOManswerD)}>{answerD}</p>
+  <br>
+  <a href="/">&lt;</a>
 </div>
 
 <style>
+  :global(.correct) {
+    color: teal;
+  }
+  :global(.wrong) {
+    color: crimson;
+  }
   div {
     line-height: 5rem;
   }
@@ -31,10 +39,9 @@
     cursor: pointer;
     font-size: 1.5rem;
   }
-  :global(.correct) {
-    color: teal;
-  }
-  :global(.wrong) {
-    color: crimson;
+  a {
+    color: gray;
+    font-weight: 200;
+    font-size: 5rem;
   }
 </style>
