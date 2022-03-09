@@ -4,9 +4,6 @@
   let DOManswerA, DOManswerB, DOManswerC, DOManswerD;
 
   let checkAnswer = (answer, DOManswer) => {
-    console.log('answer', answer)
-    console.log('correct', correct)
-    console.log('DOManswer', DOManswer)
     answer === correct ? DOManswer.classList.add('correct') : DOManswer.classList.add('wrong')
   }
 </script>
