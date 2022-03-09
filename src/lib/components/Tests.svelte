@@ -1,7 +1,6 @@
 <script>
   import { onMount } from 'svelte'
   import { writable } from 'svelte/store'
-  import { fly } from 'svelte/transition'
   import Test from '$lib/components/Test.svelte'
 
   export let url
@@ -55,7 +54,7 @@
 {#if $resultStore[i]}
   <section>
     {#key $resultStore[i]}
-      <span style="display: inline-block; position: absolute; top: 40%; padding: 0 20vw" in:fly={{ y: -20, delay: 200 }} out:fly={{ y: 20}}>
+      <span style="display: inline-block; position: absolute; top: 40%; padding: 0 20vw">
         <Test {...$resultStore[i]} {i}/>
       </span>
     {/key}
