@@ -15,8 +15,6 @@
   <p bind:this={DOManswerC} on:click={() => checkAnswer(answerC, DOManswerC)}>{answerC}</p>
   <p bind:this={DOManswerD} on:click={() => checkAnswer(answerD, DOManswerD)}>{answerD}</p>
   <a href="/">&larr;</a>
-  <br>
-  
 </div>
 
 <style>

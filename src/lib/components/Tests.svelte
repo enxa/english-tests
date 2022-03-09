@@ -1,6 +1,7 @@
 <script>
   import { onMount } from 'svelte'
   import { writable } from 'svelte/store'
+  import { fly } from 'svelte/transition'
   import Test from '$lib/components/Test.svelte'
 
   export let url
@@ -35,10 +36,6 @@
     resultStore.set(resultArray)
   }
 
-  let handleScroll = e => {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) loadMore(skip++)
-  }
-
   let i = 0
   let handleWheel = e => {
     if (e.deltaY > 0) ++i <= 0 ? i = 0 : i
@@ -54,7 +51,7 @@
 {#if $resultStore[i]}
   <section>
     {#key $resultStore[i]}
-      <span style="display: inline-block; position: absolute; top: 40%; padding: 0 20vw">
+      <span style="display: inline-block; position: absolute; top: 40%; padding: 0 20vw" in:fly={{ y: -20, delay: 200 }} out:fly={{ y: 20}}>
         <Test {...$resultStore[i]} {i}/>
       </span>
     {/key}
