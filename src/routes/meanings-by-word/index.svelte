@@ -1,6 +1,7 @@
 <script>
   import { onMount } from 'svelte'
   import { writable } from 'svelte/store'
+  import { fly } from 'svelte/transition'
   import Test from '$lib/components/Test.svelte'
 
   let loading = false
@@ -24,7 +25,7 @@
       }
     }
 
-    let resource = `./meanings-by-word?${query.toString()}`
+    let resource = `./meanings-by-word.json?${query.toString()}`
     let response = await fetch(resource, responseObject)
     let result = await response.json()
 
@@ -50,9 +51,21 @@
 <svelte:window on:wheel={handleWheel}/>
 
 {#if $resultStore[i]}
-  <Test {...$resultStore[i]} />
+  <section>
+    {#key $resultStore[i]}
+      <span style="display: inline-block; position: absolute; top: 36%; padding: 0 20vw" in:fly={{ y: -20, delay: 200 }} out:fly={{ y: 20}}>
+        <Test {...$resultStore[i]} {i}/>
+      </span>
+    {/key}
+  </section>
 {/if}
 
+<style>
+  section {
+    width: 100%;
+    height: 100vh;
+  }
+</style>
 
 
 <!-- <section>

@@ -6,7 +6,7 @@
   let handleSignUp = async e => {
     let data = { email, password }
 
-    let response = await fetch(`./auth`, {
+    let response = await fetch(`./auth.json`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -20,7 +20,7 @@
   let handleSignIn = async e => {
     let data = { email, password }
 
-    let response = await fetch(`./auth`, {
+    let response = await fetch(`./auth.json`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -34,7 +34,7 @@
   let handleSignOut = async e => {
     let data = { email, password }
 
-    let response = await fetch(`./auth`, {
+    let response = await fetch(`./auth.json`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -63,7 +63,7 @@
 <h1>Sign out</h1>
 <form on:submit|preventDefault={handleSignOut}>
   <input type="submit" value="Sign out">
-</form> -->
+</form>
 
 {#if result}
   {result.auth}
