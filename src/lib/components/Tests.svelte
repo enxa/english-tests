@@ -1,7 +1,6 @@
 <script>
   import { onMount } from 'svelte'
   import { writable } from 'svelte/store'
-  import { fade } from 'svelte/transition'
   import Test from '$lib/components/Test.svelte'
 
   export let url
@@ -47,9 +46,7 @@
 {#if $resultStore[i]}
   <section class="tests">
     {#key $resultStore[i]}
-      <div transition:fade>
-        <Test {...$resultStore[i]} {i}/>
-      </div>
+      <Test {...$resultStore[i]} {i}/>
     {/key}
   </section>
 {/if}
