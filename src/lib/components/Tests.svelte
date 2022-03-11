@@ -6,7 +6,6 @@
 
   export let url
 
-  let loading = false
   let query = new URLSearchParams()
   let resultArray = []
   let resultStore = writable([])
@@ -14,10 +13,8 @@
   let limit = 100
   
   let loadMore = async (skip) => {
-    loading = true
-    // let skip = Number(e.detail.skip)
     query.set('limit', String(limit))
-    query.set('skip', String(skip * limit))
+    query.set('skip', String(skip))
     
     let responseObject = {
       method: 'GET',
@@ -31,16 +28,11 @@
     let response = await fetch(resource, responseObject)
     let result = await response.json()
 
-    if (result) loading = false
     resultArray = [...resultArray, ...result]
     resultStore.set(resultArray)
   }
 
-  let handleScroll = e => {
-    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) loadMore(skip++)
-  }
-
-  let i = 0
+  $: i = 0
   let handleWheel = e => {
     if (e.deltaY > 0) ++i <= 0 ? i = 0 : i
     else if (e.deltaY < 0) --i <= 0 ? i = 0 : i
