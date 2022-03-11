@@ -32,7 +32,7 @@
     resultStore.set(resultArray)
   }
 
-  $: i = 0
+  let i = 0
   let handleWheel = e => {
     if (e.deltaY > 0) ++i <= 0 ? i = 0 : i
     else if (e.deltaY < 0) --i <= 0 ? i = 0 : i
