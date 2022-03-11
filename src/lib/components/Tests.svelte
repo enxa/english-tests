@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte'
   import { writable } from 'svelte/store'
-  import { fly } from 'svelte/transition'
+  import { fade } from 'svelte/transition'
   import Test from '$lib/components/Test.svelte'
 
   export let url
@@ -53,18 +53,11 @@
 <svelte:window on:wheel={handleWheel}/>
 
 {#if $resultStore[i]}
-  <section>
+  <section class="tests">
     {#key $resultStore[i]}
-      <span style="display: inline-block; position: absolute; top: 40%; padding: 0 20vw" in:fly={{ y: -20, delay: 200 }} out:fly={{ y: 20}}>
+      <div transition:fade>
         <Test {...$resultStore[i]} {i}/>
-      </span>
+      </div>
     {/key}
   </section>
 {/if}
-
-<style>
-  section {
-    width: 100%;
-    height: 100vh;
-  }
-</style>
